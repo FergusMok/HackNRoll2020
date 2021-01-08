@@ -42,7 +42,7 @@ const useStyles = makeStyles({
 
 export default function SimpleCard() {
   const classes = useStyles();
-  const isMatched = () => true;
+  const isMatched = () => false;
   const status = isMatched() ? "MATCHED" : "WAITING FOR MATCH";
   const [open, setOpen] = useState(false);
 
@@ -57,7 +57,12 @@ export default function SimpleCard() {
   const confirmMatchButton = () =>
     isMatched() ? (
       <>
-        <Button className={classes.itembutton} variant="outlined" color="primary" onClick={handleClickOpen}>
+        <Button
+          className={classes.itembutton}
+          variant="outlined"
+          color="primary"
+          onClick={handleClickOpen}
+        >
           Confirm Matching
         </Button>
         <Dialog
@@ -66,11 +71,13 @@ export default function SimpleCard() {
           aria-labelledby="alert-dialog-title"
           aria-describedby="alert-dialog-description"
         >
-          <DialogTitle id="alert-dialog-title">{"Confirm to match with user?"}</DialogTitle>
+          <DialogTitle id="alert-dialog-title">
+            {"Confirm to match with user?"}
+          </DialogTitle>
           <DialogContent>
             <DialogContentText id="alert-dialog-description">
-              Matching will allow both users to contact each other. Your contact information will be released to the
-              other user, and vice versa.
+              Matching will allow both users to contact each other. Your contact
+              information will be released to the other user, and vice versa.
             </DialogContentText>
           </DialogContent>
           <DialogActions>
@@ -91,9 +98,16 @@ export default function SimpleCard() {
   // #FFF8DB YELLOW
 
   return (
-    <Card className={classes.root} style={{ backgroundColor: isMatched() ? "#E5F9E7" : "#FFF8DB" }}>
+    <Card
+      className={classes.root}
+      style={{ backgroundColor: isMatched() ? "#E5F9E7" : "#FFF8DB" }}
+    >
       <CardContent>
-        <Typography className={classes.status} color="textSecondary" gutterBottom>
+        <Typography
+          className={classes.status}
+          color="textSecondary"
+          gutterBottom
+        >
           {status}
         </Typography>
         <Typography variant="h5" component="h2">

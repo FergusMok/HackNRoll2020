@@ -18,7 +18,7 @@ const App = () => {
         <Route path="/signup" exact component={SignUp} />
         <Route path="/signin" exact component={SignUp} />
         <Route path="/create" exact component={CreateNewItem} />
-        <Route path="/item2" exact component={User} />
+        <Route path="/item/:id" exact component={User} />
         <Route path="/item3" exact component={NewItem} />
         <Route path="/notifications" exact component={NotificationPage} />
         <Route path="/gallery" exact component={Gallery} />
