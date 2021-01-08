@@ -7,7 +7,7 @@ const IMAGE_LINK =
 const FrontPage = () => {
   return (
     <div>
-      <img style={{ width: "100%", objectFit: "" }} src={IMAGE_LINK} />
+      <img style={{ width: "100%", objectFit: "cover" }} src={IMAGE_LINK} />
     </div>
   );
 };

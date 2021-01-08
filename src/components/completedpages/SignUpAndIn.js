@@ -36,17 +36,31 @@ export default function SignInAndIn() {
   const confirmPassword = isSignInPage() ? (
     <> </>
   ) : (
-    <TextField
-      variant="outlined"
-      margin="normal"
-      required
-      fullWidth
-      name="Confirm Password"
-      label="Confirm Password"
-      type="password"
-      id="password"
-      autoComplete="current-password"
-    />
+    <div>
+      <TextField
+        variant="outlined"
+        margin="normal"
+        required
+        fullWidth
+        name="Confirm Password"
+        label="Confirm Password"
+        type="password"
+        id="password"
+        autoComplete="current-password"
+      />
+
+      <TextField
+        variant="outlined"
+        margin="normal"
+        required
+        fullWidth
+        name="Telegram ID"
+        label="Confirm Password"
+        type="password"
+        id="password"
+        autoComplete="current-password"
+      />
+    </div>
   );
 
   return (
