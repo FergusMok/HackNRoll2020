@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Grid from "@material-ui/core/Grid";
 import { makeStyles } from "@material-ui/core/styles";
@@ -7,6 +7,7 @@ import AlbumItems from "./AlbumItems";
 import AddIcon from "@material-ui/icons/Add";
 import Fab from "@material-ui/core/Fab";
 import Tooltip from "@material-ui/core/Tooltip";
+import { requestsMadeByUser } from "./API/API";
 
 const useStyles = makeStyles((theme) => ({
   icon: {
@@ -47,15 +48,25 @@ const useStyles = makeStyles((theme) => ({
 
 const Album = () => {
   const classes = useStyles();
+  const [ranklist, setRanklist] = useState([]);
+
+  useEffect(() => {
+    requestsMadeByUser((x) => setRanklist(x));
+  }, []);
+
+  const renderItems = () => {
+    ranklist.map((x) => {
+      return <AlbumItems title={x.title} description={x.description} />;
+    });
+  };
 
   return (
     <React.Fragment>
       <CssBaseline />
       <main>
         <Container className={classes.cardGrid} maxWidth="md">
-          <Grid container spacing={4}>
-            <AlbumItems />
-          </Grid>
+          <Grid container spacing={4}></Grid>
+          {renderItems}
         </Container>
       </main>
       <Tooltip title="Add" aria-label="add">

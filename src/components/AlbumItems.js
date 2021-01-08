@@ -1,5 +1,4 @@
-import React from "react";
-import Button from "@material-ui/core/Button";
+import React, { useEffect } from "react";
 import Card from "@material-ui/core/Card";
 import { makeStyles } from "@material-ui/core/styles";
 import CardActionArea from "@material-ui/core/CardActionArea";
@@ -43,21 +42,28 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const AlbumItems = () => {
+const AlbumItems = ({ title, description }) => {
   const classes = useStyles();
-  const cards = [1, 2, 3, 4, 5, 6];
+
+  // userID
+  // matchedUsers
+  // id
+  // title
+  // description
+  // endTime
+
   const history = useHistory();
 
-  return cards.map((card) => (
-    <Grid item key={card} xs={12} sm={6} md={4}>
+  return (
+    <Grid item key={title} xs={12} sm={6} md={4}>
       <Card className={classes.card}>
         <CardActionArea onClick={() => history.push("/item")}>
-          <CardMedia className={classes.cardMedia} image="https://source.unsplash.com/random" title="Image title" />
+          <CardMedia className={classes.cardMedia} image="https://source.unsplash.com/random" title={title} />
           <CardContent className={classes.cardContent}>
             <Typography gutterBottom variant="h5" component="h2">
               Heading
             </Typography>
-            <Typography>This is a media card. You can use this section to describe the content.</Typography>
+            <Typography>{description}</Typography>
           </CardContent>
         </CardActionArea>
         <CardActions style={{ flexWrap: "wrap" }}>
@@ -69,7 +75,7 @@ const AlbumItems = () => {
         </CardActions>
       </Card>
     </Grid>
-  ));
+  );
 };
 
 export default AlbumItems;

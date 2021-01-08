@@ -12,6 +12,7 @@ import Container from "@material-ui/core/Container";
 import { useHistory } from "react-router-dom";
 import { signup, backendURL, login } from "../API/LoginHandler";
 import Alert from "@material-ui/lab/Alert";
+import IconButton from "@material-ui/core/IconButton";
 
 const useStyles = makeStyles((theme) => ({
   paper: {

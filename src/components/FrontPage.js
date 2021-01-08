@@ -6,18 +6,6 @@ import Image from "./CSS/background.webp";
 const IMAGE_LINK =
   "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1189&q=80";
 
-const styles = {
-  body: {
-    margin: "0",
-    padding: "0",
-    position: "relative",
-    background: `url(${Image})`,
-    backgroundRepeat: "no-repeat",
-    backgroundSize: "cover",
-    height: 100%,
-  },
-};
-
 const FrontPage = () => {
   /*   const sectionStyle = {
     flex: 1,
@@ -29,7 +17,7 @@ const FrontPage = () => {
   };
 
  */
-  return <div style={styles.backgroundImage}></div>;
+  return <div> Hello, front page here</div>;
 };
 
 export default FrontPage;
