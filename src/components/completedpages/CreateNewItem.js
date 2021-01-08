@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { useHistory } from "react-router-dom";
-import { postNewSocialRequest } from "./API/API";
+import { postNewSocialRequest } from "../API/API";
 import "../CSS/CreateNewItem.css";
 
 const CreateNewItem = () => {
