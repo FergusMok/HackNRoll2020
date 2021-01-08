@@ -3,12 +3,13 @@ import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import TextField from "@material-ui/core/TextField";
-import Link from "@material-ui/core/Link";
+import { Link } from "react-router-dom";
 import Grid from "@material-ui/core/Grid";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
+import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -30,9 +31,10 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SignInAndIn() {
+export default function SignInAndIn({ match }) {
   const classes = useStyles();
-  const isSignInPage = () => false;
+  const isSignInPage = () => (match.path === "/signup" ? false : true);
+  const history = useHistory();
   const confirmPassword = isSignInPage() ? (
     <> </>
   ) : (
@@ -55,10 +57,9 @@ export default function SignInAndIn() {
         required
         fullWidth
         name="Telegram ID"
-        label="Confirm Password"
-        type="password"
-        id="password"
-        autoComplete="current-password"
+        label="Telegram ID"
+        type="text"
+        id="text"
       />
     </div>
   );
@@ -102,7 +103,7 @@ export default function SignInAndIn() {
           </Button>
           <Grid container>
             <Grid item>
-              <Link href="#" variant="body2">
+              <Link to={isSignInPage() ? "/signup" : "/signin"}>
                 {isSignInPage() ? "Don't have an account? Sign Up" : "Have an account? Sign in!"}
               </Link>
             </Grid>
