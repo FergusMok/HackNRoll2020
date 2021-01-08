@@ -80,6 +80,15 @@ export default function SignInAndIn({ match }) {
       }
     });
   };
+
+  const handleLogin = async (event) => {
+    event.preventDefault();
+    login(username, password, (e) => {
+      if (e === true) {
+        history.push("/signin");
+      }
+    });
+  };
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
@@ -90,7 +99,10 @@ export default function SignInAndIn({ match }) {
         <Typography component="h1" variant="h5">
           {isSignInPage() ? "Sign In" : "Sign up for an account!"}
         </Typography>
-        <form className={classes.form} onSubmit={(event) => handleSubmit(event)}>
+        <form
+          className={classes.form}
+          onSubmit={(event) => (isSignInPage() ? handleLogin(event) : handleSubmit(event))}
+        >
           <TextField
             variant="outlined"
             margin="normal"

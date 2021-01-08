@@ -1,7 +1,7 @@
 import axios from "axios";
 import { isValid } from "./API";
 
-export const backendURL = "http//localhost:8080";
+export const backendURL = "http://localhost:8080";
 
 let userinfo = {};
 
