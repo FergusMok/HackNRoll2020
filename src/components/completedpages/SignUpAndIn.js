@@ -55,7 +55,7 @@ export default function SignInAndIn({ match }) {
         type="password"
         id="password"
         autoComplete="current-password"
-        onKeyPress={(e) => setconfirmPassword(e.target.value)}
+        onInput={(e) => setconfirmPassword(e.target.value)}
       />
 
       <TextField
@@ -67,12 +67,13 @@ export default function SignInAndIn({ match }) {
         label="Telegram ID"
         type="text"
         id="text"
-        onKeyPress={(e) => settelegramID(e.target.value)}
+        onInput={(e) => settelegramID(e.target.value)}
       />
     </div>
   );
   const handleSubmit = async (event) => {
     event.preventDefault();
+    console.log(username, telegramID, confirmPasswordstate, password);
     signup(username, telegramID, password, (e) => {
       if (e === true) {
         history.push("/signin");
@@ -113,7 +114,7 @@ export default function SignInAndIn({ match }) {
             name="email"
             autoComplete="email"
             autoFocus
-            onKeyPress={(e) => setUsername(e.target.value)}
+            onInput={(e) => setUsername(e.target.value)}
           />
           <TextField
             variant="outlined"
@@ -125,7 +126,7 @@ export default function SignInAndIn({ match }) {
             type="password"
             id="password"
             autoComplete="current-password"
-            onKeyPress={(e) => setPassword(e.target.value)}
+            onInput={(e) => setPassword(e.target.value)}
           />
           {confirmPassword}
           <Button type="submit" fullWidth variant="contained" color="primary" className={classes.submit}>

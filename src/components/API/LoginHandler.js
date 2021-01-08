@@ -15,6 +15,8 @@ export async function signup(username, telegramID, password, callback) {
   params.append("telegramID", telegramID);
   params.append("password", password);
 
+  console.log(username, telegramID, password);
+
   axios({
     method: "post",
     url: actualURL,
