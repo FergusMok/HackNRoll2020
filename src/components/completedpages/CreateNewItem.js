@@ -5,17 +5,18 @@ import "../CSS/CreateNewItem.css";
 
 const CreateNewItem = () => {
   const history = useHistory();
-  const onFormSubmit = (event) => {
-    event.preventDefault();
-    postNewSocialRequest((e) => {
-      history.push("/main");
-    });
-  };
 
   const onFormEdit = () => console.log("hello from edit");
   const isNewItem = () => true;
   const [titleState, setTitle] = useState("");
   const [bodyState, setBody] = useState("");
+
+  const onFormSubmit = (event) => {
+    event.preventDefault();
+    postNewSocialRequest(titleState, bodyState, (e) => {
+      history.push("/main");
+    });
+  };
 
   const submitEditButton = (
     <button type="submit" className="itembutton">
