@@ -7,23 +7,14 @@ const IMAGE_LINK =
   "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1189&q=80";
 
 const styles = {
-  paperContainer: {
-    height: 1356,
-    backgroundImage: `url(${IMAGE_LINK})`,
-    backgroundSize: "contain",
-    backgroundPosition: "top",
+  body: {
+    margin: "0",
+    padding: "0",
+    position: "relative",
+    background: `url(${Image})`,
     backgroundRepeat: "no-repeat",
-    backgroundAttachment: "fixed",
-  },
-  descriptionCard: {
-    backgroundImage: `url(${IMAGE_LINK})`,
-    backgroundPosition: "center",
     backgroundSize: "cover",
-    backgroundRepeat: "no-repeat",
-    margin: "auto",
-  },
-  styling: {
-    backgroundImage: `url(${Image})`,
+    height: 100%,
   },
 };
 
