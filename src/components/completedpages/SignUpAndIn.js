@@ -13,6 +13,7 @@ import { useHistory } from "react-router-dom";
 import { signup, backendURL, login } from "../API/LoginHandler";
 import Alert from "@material-ui/lab/Alert";
 import IconButton from "@material-ui/core/IconButton";
+import CloseIcon from "@material-ui/icons/Close";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
