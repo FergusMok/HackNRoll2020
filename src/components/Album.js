@@ -8,7 +8,7 @@ import { AlbumDisplay } from "./AlbumDisplay";
 import AddIcon from "@material-ui/icons/Add";
 import Fab from "@material-ui/core/Fab";
 import Tooltip from "@material-ui/core/Tooltip";
-import { requestsMadeByUser } from "./API/API";
+import { activeRequests, requestsMadeByUser } from "./API/API";
 import { Link } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
@@ -57,7 +57,7 @@ const Album = () => {
   }
 
   useEffect(() => {
-    requestsMadeByUser(setList);
+    activeRequests(setList);
   }, []);
 
   return (
