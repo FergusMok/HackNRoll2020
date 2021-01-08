@@ -1,55 +1,49 @@
 import axios from "axios";
 import { isValid } from "./API";
 
-const backendURL = "https://cc-contest-arena-backend.herokuapp.com/api";
+const backendURL = "http//localhost:8080";
 
 let userinfo = {};
 
 export async function logoutUser() {
-  console.log("LOGOUT CALLED");
-  sessionStorage.setItem("access_token", -1);
-  axios.get(backendURL + "/logout", { withCredentials: true }).then((response) => {
-    userinfo = {};
-    console.log(response);
-  });
+  sessionStorage.removeItem("access_token");
 }
 
-export function getUserDetails(callback) {
-  //if (isLoggedIn() && sessionStorage.getItem("userdetails") !== undefined) {
-  //callback(sessionStorage.getItem("userdetails"));
-  //return;
-  //}
-  console.log("OOF");
-  axios.get(backendURL + "/userinfo", { withCredentials: true }).then((response) => {
-    if (!isValid(response)) logoutUser();
-    else {
-      userinfo = response.data;
-      sessionStorage.setItem("LoggedIn", "true");
-      sessionStorage.setItem("userdetails", userinfo.username);
-    }
-    console.log(userinfo);
-    callback(userinfo);
-  });
+export async function signup(username, telegramID, password, callback) {
+  const actualURL = backendURL + "/signup";
+
+  const params = new URLSearchParams();
+  params.append("username", username);
+  params.append("telegramID", telegramID);
+  params.append("password", password);
+
+  axios({
+    method: "post",
+    url: actualURL,
+    data: params,
+    withCredentials: true,
+  })
+    .then((response) => callback(response.data))
+    .catch((Error) => console.log(error));
 }
 
-export function getUsername() {
-  console.log(sessionStorage.getItem("userdetails"));
-  if (isLoggedIn() && sessionStorage.getItem("userdetails") != null) return sessionStorage.getItem("userdetails");
-  else return "";
-}
+export async function login(username, password, callback) {
+  const actualURL = backendURL + "/login";
 
-export function isLoggedIn() {
-  return sessionStorage.getItem("LoggedIn") === "true";
+  const params = new URLSearchParams();
+  params.append("username", username);
+  params.append("password", password);
 
-  // axios
-  //   .get(backendURL + "/loggedinstatus", { withCredentials: true })
-  //   .then((promise) => {
-  //     console.log(promise);
-  //     if (promise.data === "x") callback(1);
-  //     else callback(2);
-  //   })
-  //   .catch((Error) => {
-  //     console.log(Error);
-  //   });
-  // //return loggedInStatus;
+  axios({
+    method: "post",
+    url: actualURL,
+    data: params,
+    withCredentials: true,
+  })
+    .then((response) => {
+      sessionStorage.setItem("access_token", response.data.token);
+      sessionStorage.setItem("user_id", response.data.user.id);
+      callback(response.data.user);
+    })
+    .catch((Error) => console.log(error));
 }
