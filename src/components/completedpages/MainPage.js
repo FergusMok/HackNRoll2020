@@ -19,6 +19,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const NewItem = () => {
+  user = JSON.parse(sessionStorage.getItem("userInfo"));
+  console.log(user);
   const classes = useStyles();
   return (
     <div style={{ display: "flex" }}>

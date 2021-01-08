@@ -3,8 +3,6 @@ import { isValid } from "./API";
 
 export const backendURL = "http://localhost:8080";
 
-let userinfo = {};
-
 export async function logoutUser() {
   sessionStorage.removeItem("access_token");
 }

@@ -11,7 +11,6 @@ import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import { useHistory } from "react-router-dom";
 import { signup, backendURL, login } from "../API/LoginHandler";
-import axios from "axios";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -84,8 +83,9 @@ export default function SignInAndIn({ match }) {
   const handleLogin = async (event) => {
     event.preventDefault();
     login(username, password, (e) => {
-      if (e === true) {
-        history.push("/signin");
+      if (e !== null) {
+        sessionStorage.setItem("userInfo", JSON.stringify(e));
+        history.push("/main");
       }
     });
   };
