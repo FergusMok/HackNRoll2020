@@ -17,10 +17,10 @@ const App = () => {
         <Route path="/main" exact component={MainPage} />
         <Route path="/signup" exact component={SignUp} />
         <Route path="/signin" exact component={SignUp} />
-        <Route path="/item" exact component={CreateNewItem} />
+        <Route path="/create" exact component={CreateNewItem} />
         <Route path="/item2" exact component={User} />
         <Route path="/item3" exact component={NewItem} />
-        <Route path="/item4" exact component={NotificationPage} />
+        <Route path="/notifications" exact component={NotificationPage} />
         <Route path="/gallery" exact component={Gallery} />
       </Switch>
     </Router>

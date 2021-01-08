@@ -12,12 +12,12 @@ import { Link } from "react-router-dom";
 const Sidebar = () => {
   return (
     <div>
-      <Link to="/signup">
+      <Link to="/notifications">
         <ListItem button>
           <ListItemIcon>
             <AccountCircleIcon />
           </ListItemIcon>
-          <ListItemText primary="My Account" />
+          <ListItemText primary="Notifications" />
         </ListItem>
       </Link>
       <Link to="/item2">

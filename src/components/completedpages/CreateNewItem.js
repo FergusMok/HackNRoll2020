@@ -1,9 +1,17 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { useHistory } from "react-router-dom";
+import { postNewSocialRequest } from "./API/API";
 import "../CSS/CreateNewItem.css";
 
 const CreateNewItem = () => {
-  const onFormSubmit = () => console.log("hello from submit");
+  const history = useHistory();
+  const onFormSubmit = (event) => {
+    event.preventDefault();
+    postNewSocialRequest((e) => {
+      history.push("/main");
+    });
+  };
+
   const onFormEdit = () => console.log("hello from edit");
   const isNewItem = () => true;
   const [titleState, setTitle] = useState("");
@@ -30,7 +38,7 @@ const CreateNewItem = () => {
 
   return (
     <div className="NewItemBody">
-      <form onSubmit={(event) => (isNewItem() ? onFormSubmit() : onFormEdit())} className="itemform">
+      <form onSubmit={(event) => (isNewItem() ? onFormSubmit(event) : onFormEdit(event))} className="itemform">
         <h1 className="itemh1"> {isNewItem() ? "Create new item!" : "Edit item!"} </h1>
         <label className="itemlabel">
           Title:
