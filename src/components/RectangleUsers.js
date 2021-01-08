@@ -62,7 +62,6 @@ export default function RectangleUsers({ user }) {
         <Typography className={classes.pos} variant="h5" component="h2">
           Contact via Telegram at : {userTelegram}
         </Typography>
-        {confirmMatchButton()}
       </CardContent>
     </Card>
   );

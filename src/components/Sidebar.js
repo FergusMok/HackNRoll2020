@@ -20,7 +20,7 @@ const Sidebar = () => {
           <ListItemText primary="Notifications" />
         </ListItem>
       </Link>
-      <Link to="/item2">
+      <Link to="/main">
         <ListItem button>
           <ListItemIcon>
             <GroupIcon />
@@ -28,26 +28,6 @@ const Sidebar = () => {
           <ListItemText primary="Activities" />
         </ListItem>
       </Link>
-      <Link to="/item">
-        <ListItem button>
-          <ListItemIcon>
-            <CardGiftcardIcon />
-          </ListItemIcon>
-          <ListItemText primary="Items" />
-        </ListItem>
-      </Link>
-      <ListItem button>
-        <ListItemIcon>
-          <BarChartIcon />
-        </ListItemIcon>
-        <ListItemText primary="Matches" />
-      </ListItem>
-      <ListItem button>
-        <ListItemIcon>
-          <LayersIcon />
-        </ListItemIcon>
-        <ListItemText primary="Spare Button" />
-      </ListItem>
     </div>
   );
 };
