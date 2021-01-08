@@ -13,7 +13,7 @@ const FrontPage = () => {
   };
 
   console.log(sectionStyle.backgroundImage);
-  return <section style={sectionStyle} />;
+  return <img style={sectionStyle} />;
 };
 
 export default FrontPage;
