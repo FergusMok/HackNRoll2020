@@ -27,7 +27,7 @@ export async function signup(username, telegramID, password, callback) {
     .catch((Error) => console.log(Error));
 }
 
-export async function login(username, password, callback) {
+export async function login(username, password, callback, failureCallback) {
   const actualURL = backendURL + "/login";
 
   const params = new URLSearchParams();
@@ -41,6 +41,9 @@ export async function login(username, password, callback) {
     withCredentials: true,
   })
     .then((response) => {
+      if (response.data.user === null) {
+        failureCallback();
+      }
       sessionStorage.setItem("access_token", response.data.token);
       sessionStorage.setItem("user_id", response.data.user.id);
       callback(response.data.user);
