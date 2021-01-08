@@ -11,6 +11,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import { useHistory } from "react-router-dom";
 import { signup, backendURL, login } from "../API/LoginHandler";
+import Alert from "@material-ui/lab/Alert";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -30,6 +31,12 @@ const useStyles = makeStyles((theme) => ({
   submit: {
     margin: theme.spacing(3, 0, 2),
   },
+  alert: {
+    width: "100%",
+    "& > * + *": {
+      marginTop: theme.spacing(2),
+    },
+  },
 }));
 
 export default function SignInAndIn({ match }) {
@@ -38,6 +45,7 @@ export default function SignInAndIn({ match }) {
   const [confirmPasswordstate, setconfirmPassword] = useState("");
   const [password, setPassword] = useState("");
   const [telegramID, settelegramID] = useState("");
+  const [open, setOpen] = useState(false);
 
   const isSignInPage = () => (match.path === "/signup" ? false : true);
   const history = useHistory();
@@ -83,12 +91,17 @@ export default function SignInAndIn({ match }) {
 
   const handleLogin = async (event) => {
     event.preventDefault();
-    login(username, password, (e) => {
-      if (e !== null) {
-        sessionStorage.setItem("userInfo", JSON.stringify(e));
-        history.push("/main");
-      }
-    });
+    login(
+      username,
+      password,
+      (e) => {
+        if (e !== null) {
+          sessionStorage.setItem("userInfo", JSON.stringify(e));
+          history.push("/main");
+        }
+      },
+      () => setOpen(true)
+    );
   };
   return (
     <Container component="main" maxWidth="xs">
@@ -129,6 +142,22 @@ export default function SignInAndIn({ match }) {
             onInput={(e) => setPassword(e.target.value)}
           />
           {confirmPassword}
+          <Alert
+            action={
+              <IconButton
+                aria-label="close"
+                color="inherit"
+                size="small"
+                onClick={() => {
+                  setOpen(false);
+                }}
+              >
+                <CloseIcon fontSize="inherit" />
+              </IconButton>
+            }
+          >
+            Wrong username and/or password!
+          </Alert>
           <Button type="submit" fullWidth variant="contained" color="primary" className={classes.submit}>
             {isSignInPage() ? "Log In" : "Register"}
           </Button>
