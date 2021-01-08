@@ -45,6 +45,8 @@ export default function RectangleItems({ post }) {
   const classes = useStyles();
 
   // CHANGE WHEN API COMES
+  console.log("TIKTIK : ");
+  console.log(post);
 
   const postUsersMatched = post.usersMatched;
   const numberOfMatches = postUsersMatched.length;
@@ -54,10 +56,10 @@ export default function RectangleItems({ post }) {
 
   const isMatched = numberOfMatches > 0 ? true : false;
 
-  const status = isMatched() ? "MATCHED" : "WAITING FOR MATCH";
+  const status = isMatched ? "MATCHED" : "WAITING FOR MATCH";
 
   const confirmMatchButton = () =>
-    isMatched() ? (
+    isMatched ? (
       <>
         <Link
           to={{
@@ -65,7 +67,11 @@ export default function RectangleItems({ post }) {
             state: postUsersMatched,
           }}
         />
-        <Button className={classes.itembutton} variant="outlined" color="primary">
+        <Button
+          className={classes.itembutton}
+          variant="outlined"
+          color="primary"
+        >
           View Applicants!
         </Button>
         <Link />
@@ -109,9 +115,16 @@ export default function RectangleItems({ post }) {
   }
 
   return (
-    <Card className={classes.root} style={{ backgroundColor: isMatched() ? "#E5F9E7" : "#FFF8DB" }}>
+    <Card
+      className={classes.root}
+      style={{ backgroundColor: isMatched ? "#E5F9E7" : "#FFF8DB" }}
+    >
       <CardContent>
-        <Typography className={classes.status} color="textSecondary" gutterBottom>
+        <Typography
+          className={classes.status}
+          color="textSecondary"
+          gutterBottom
+        >
           {status}
         </Typography>
         <Typography variant="h5" component="h2">

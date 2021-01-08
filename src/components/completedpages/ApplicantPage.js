@@ -26,10 +26,7 @@ const ApplicantPage = () => {
       <Titlebar name={"Applicant Page"} />
       <main className={classes.content}>
         <div className={classes.appBarSpacer} />
-        <RectangleItems />
-        <RectangleItems />
-        <RectangleItems />
-        <RectangleItems />
+        {renderRectangleUsers}
       </main>
     </div>
   );

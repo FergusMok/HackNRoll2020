@@ -1,7 +1,8 @@
 import RectangleItems from "../RectangleItems";
 import Titlebar from "../Titlebar";
 import { makeStyles } from "@material-ui/core/styles";
-import { useCallback } from "react";
+import { useCallback, useState, useEffect } from "react";
+import { getRequest } from "../API/API";
 
 const useStyles = makeStyles((theme) => ({
   appBarSpacer: theme.mixins.toolbar,
@@ -13,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const NotificationPage = () => {
-  const [notifications, setNotifications] = setState([]);
+  const [notifications, setNotifications] = useState([]);
 
   // Get request, to get all the rectangle items.
   // The request will be used to map to rectangle items.
@@ -30,7 +31,7 @@ const NotificationPage = () => {
       // FILL IN WHEN API COMES
       // IF WANT TO SORT BY GREEN, YELLOW, RED, THEN SORT HERE
       // NOTIFICATIONS.SORT( ... ).MAP( ... )
-      return <RectangleItems post />;
+      return <RectangleItems post={post} />;
     });
   });
 
@@ -40,7 +41,9 @@ const NotificationPage = () => {
       <Titlebar name={"Notifications"} />
       <main className={classes.content}>
         <div className={classes.appBarSpacer} />
-        {renderRectangleItems}
+        {notifications.map((post) => (
+          <RectangleItems post={post} />
+        ))}
       </main>
     </div>
   );

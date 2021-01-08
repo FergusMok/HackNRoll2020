@@ -19,8 +19,8 @@ const App = () => {
         <Route path="/create" exact component={CreateNewItem} />
         <Route path="/item/:id" exact component={User} />
         {/* The id for Notification and Applicant is user ID. The ID above is Item ID} */}
-        <Route path="/:id/notifications" exact component={NotificationPage} />
-        <Route path="/:id/applicants" exact component={ApplicantPage} />
+        <Route path="/notifications" exact component={NotificationPage} />
+        <Route path="/applicants" exact component={ApplicantPage} />
       </Switch>
     </Router>
   );
