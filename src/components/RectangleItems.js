@@ -10,6 +10,7 @@ import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
+import { Link, useHistory } from "react-router-dom";
 
 const useStyles = makeStyles({
   root: {
@@ -40,32 +41,41 @@ const useStyles = makeStyles({
   },
 });
 
-export default function SimpleCard() {
+export default function RectangleItems({ post }) {
   const classes = useStyles();
-  const isMatched = () => false;
+
+  // CHANGE WHEN API COMES
+
+  const postUsersMatched = post.usersMatched;
+  const numberOfMatches = postUsersMatched.length;
+  const userID = post.userID;
+  const postTitle = post.title;
+  const postBody = post.body;
+
+  const isMatched = numberOfMatches > 0 ? true : false;
+
   const status = isMatched() ? "MATCHED" : "WAITING FOR MATCH";
-  const [open, setOpen] = useState(false);
-
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
-
-  const handleClose = () => {
-    setOpen(false);
-  };
 
   const confirmMatchButton = () =>
     isMatched() ? (
       <>
-        <Button
-          className={classes.itembutton}
-          variant="outlined"
-          color="primary"
-          onClick={handleClickOpen}
-        >
-          Confirm Matching
+        <Link
+          to={{
+            pathName: `/${userID}/applicants`,
+            state: postUsersMatched,
+          }}
+        />
+        <Button className={classes.itembutton} variant="outlined" color="primary">
+          View Applicants!
         </Button>
-        <Dialog
+        <Link />
+      </>
+    ) : (
+      <> </>
+    );
+
+  {
+    /*         <Dialog
           open={open}
           onClose={handleClose}
           aria-labelledby="alert-dialog-title"
@@ -93,28 +103,22 @@ export default function SimpleCard() {
     ) : (
       <> </>
     );
-
   // #E5F9E7 GREEN
   // #FFF8DB YELLOW
+ */
+  }
 
   return (
-    <Card
-      className={classes.root}
-      style={{ backgroundColor: isMatched() ? "#E5F9E7" : "#FFF8DB" }}
-    >
+    <Card className={classes.root} style={{ backgroundColor: isMatched() ? "#E5F9E7" : "#FFF8DB" }}>
       <CardContent>
-        <Typography
-          className={classes.status}
-          color="textSecondary"
-          gutterBottom
-        >
+        <Typography className={classes.status} color="textSecondary" gutterBottom>
           {status}
         </Typography>
         <Typography variant="h5" component="h2">
-          Badminton Racquets!
+          {postTitle}
         </Typography>
         <Typography className={classes.pos} color="textSecondary">
-          Awaiting match... / Matched at : 8th Jan ...
+          {postBody}
         </Typography>
         {confirmMatchButton()}
       </CardContent>

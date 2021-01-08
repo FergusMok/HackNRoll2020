@@ -4,9 +4,8 @@ import MainPage from "./completedpages/MainPage";
 import User from "./completedpages/User";
 import SignUp from "./completedpages/SignUpAndIn";
 import CreateNewItem from "./completedpages/CreateNewItem";
-import NewItem from "./completedpages/MainPage";
 import NotificationPage from "./completedpages/ NotificationPage";
-import Gallery from "./Gallery";
+import ApplicantPage from "./completedpages/ApplicantPage";
 import FrontPage from "./FrontPage";
 
 const App = () => {
@@ -19,9 +18,9 @@ const App = () => {
         <Route path="/signin" exact component={SignUp} />
         <Route path="/create" exact component={CreateNewItem} />
         <Route path="/item/:id" exact component={User} />
-        <Route path="/item3" exact component={NewItem} />
-        <Route path="/notifications" exact component={NotificationPage} />
-        <Route path="/gallery" exact component={Gallery} />
+        {/* The id for Notification and Applicant is user ID. The ID above is Item ID} */}
+        <Route path="/:id/notifications" exact component={NotificationPage} />
+        <Route path="/:id/applicants" exact component={ApplicantPage} />
       </Switch>
     </Router>
   );
