@@ -17,5 +17,5 @@ export function dashboard(callback) {
     .then((response) => {
       callback(response.data);
     })
-    .catch((Error) => console.log(error));
+    .catch((Error) => console.log(Error));
 }

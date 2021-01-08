@@ -1,7 +1,7 @@
 import axios from "axios";
 import { isValid } from "./API";
 
-const backendURL = "http//localhost:8080";
+export const backendURL = "http//localhost:8080";
 
 let userinfo = {};
 
@@ -24,7 +24,7 @@ export async function signup(username, telegramID, password, callback) {
     withCredentials: true,
   })
     .then((response) => callback(response.data))
-    .catch((Error) => console.log(error));
+    .catch((Error) => console.log(Error));
 }
 
 export async function login(username, password, callback) {
@@ -45,5 +45,5 @@ export async function login(username, password, callback) {
       sessionStorage.setItem("user_id", response.data.user.id);
       callback(response.data.user);
     })
-    .catch((Error) => console.log(error));
+    .catch((Error) => console.log(Error));
 }

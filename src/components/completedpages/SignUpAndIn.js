@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -10,6 +10,8 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import { useHistory } from "react-router-dom";
+import { signup, backendURL } from "../API/LoginHandler";
+import axios from "axios";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -33,6 +35,11 @@ const useStyles = makeStyles((theme) => ({
 
 export default function SignInAndIn({ match }) {
   const classes = useStyles();
+  const [username, setUsername] = useState("");
+  const [confirmPasswordstate, setconfirmPassword] = useState("");
+  const [password, setPassword] = useState("");
+  const [telegramID, settelegramID] = useState("");
+
   const isSignInPage = () => (match.path === "/signup" ? false : true);
   const history = useHistory();
   const confirmPassword = isSignInPage() ? (
@@ -49,6 +56,7 @@ export default function SignInAndIn({ match }) {
         type="password"
         id="password"
         autoComplete="current-password"
+        onKeyPress={(e) => setconfirmPassword(e.target.value)}
       />
 
       <TextField
@@ -60,10 +68,18 @@ export default function SignInAndIn({ match }) {
         label="Telegram ID"
         type="text"
         id="text"
+        onKeyPress={(e) => settelegramID(e.target.value)}
       />
     </div>
   );
-
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    signup(username, telegramID, password, (e) => {
+      if (e === true) {
+        history.push("/signin");
+      }
+    });
+  };
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
@@ -74,7 +90,7 @@ export default function SignInAndIn({ match }) {
         <Typography component="h1" variant="h5">
           {isSignInPage() ? "Sign In" : "Sign up for an account!"}
         </Typography>
-        <form className={classes.form} noValidate>
+        <form className={classes.form} onSubmit={(event) => handleSubmit(event)}>
           <TextField
             variant="outlined"
             margin="normal"
@@ -85,6 +101,7 @@ export default function SignInAndIn({ match }) {
             name="email"
             autoComplete="email"
             autoFocus
+            onKeyPress={(e) => setUsername(e.target.value)}
           />
           <TextField
             variant="outlined"
@@ -96,6 +113,7 @@ export default function SignInAndIn({ match }) {
             type="password"
             id="password"
             autoComplete="current-password"
+            onKeyPress={(e) => setPassword(e.target.value)}
           />
           {confirmPassword}
           <Button type="submit" fullWidth variant="contained" color="primary" className={classes.submit}>
