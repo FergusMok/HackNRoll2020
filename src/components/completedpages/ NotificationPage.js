@@ -15,7 +15,7 @@ const NotificationPage = () => {
   const classes = useStyles();
   return (
     <div style={{ display: "flex" }}>
-      <Titlebar />
+      <Titlebar name={"Notifications"} />
       <main className={classes.content}>
         <div className={classes.appBarSpacer} />
         <RectangleItems />

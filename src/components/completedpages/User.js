@@ -4,7 +4,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Chip from "@material-ui/core/Chip";
 import Paper from "@material-ui/core/Paper";
 import Avatar from "@material-ui/core/Avatar";
-import Titlebar from "./Titlebar";
+import Titlebar from "../Titlebar";
 import Grid from "@material-ui/core/Grid";
 import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
@@ -16,7 +16,7 @@ import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import ImageGallery from "react-image-gallery";
 import "react-image-gallery/styles/css/image-gallery.css";
-import "./CSS/User.css";
+import "../CSS/User.css";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -76,16 +76,40 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+const userInfo = {
+  name: "Bobbo",
+  photo: "https://miro.medium.com/max/1200/1*mk1-6aYaf_Bes1E3Imhc0A.jpeg",
+  post: {
+    title: "Badminton Racquets",
+    text: "Hello, I have some badminton racquets here",
+    images: [
+      {
+        original: "https://picsum.photos/id/1018/1000/600/",
+        thumbnail: "https://picsum.photos/id/1018/250/150/",
+      },
+      {
+        original: "https://picsum.photos/id/1015/1000/600/",
+        thumbnail: "https://picsum.photos/id/1015/250/150/",
+      },
+      {
+        original: "https://picsum.photos/id/1019/1000/600/",
+        thumbnail: "https://picsum.photos/id/1019/250/150/",
+      },
+    ],
+    tags: [
+      // This is the placeholder
+      { key: 0, label: "Angular" },
+      { key: 1, label: "jQuery" },
+      { key: 2, label: "Polymer" },
+      { key: 3, label: "React" },
+      { key: 4, label: "Vue.js" },
+    ],
+  },
+};
+
 function ChipsArray() {
   const classes = useStyles();
-  const [chipData, setChipData] = React.useState([
-    // This is the placeholder
-    { key: 0, label: "Angular" },
-    { key: 1, label: "jQuery" },
-    { key: 2, label: "Polymer" },
-    { key: 3, label: "React" },
-    { key: 4, label: "Vue.js" },
-  ]);
+  const [chipData, setChipData] = React.useState(userInfo.post.tags);
 
   const handleDelete = (chipToDelete) => () => {
     setChipData((chips) => chips.filter((chip) => chip.key !== chipToDelete.key));
@@ -103,21 +127,6 @@ function ChipsArray() {
     </Paper>
   );
 }
-
-const images = [
-  {
-    original: "https://picsum.photos/id/1018/1000/600/",
-    thumbnail: "https://picsum.photos/id/1018/250/150/",
-  },
-  {
-    original: "https://picsum.photos/id/1015/1000/600/",
-    thumbnail: "https://picsum.photos/id/1015/250/150/",
-  },
-  {
-    original: "https://picsum.photos/id/1019/1000/600/",
-    thumbnail: "https://picsum.photos/id/1019/250/150/",
-  },
-];
 
 const Item = () => {
   const classes = useStyles();
@@ -167,7 +176,7 @@ const Item = () => {
 
   return (
     <div style={{ display: "flex" }}>
-      <Titlebar />
+      <Titlebar name={"Item Page"} />
       <main className={classes.content}>
         <div className={classes.appBarSpacer} />
         <Container maxWidth="lg" className={classes.container}>
@@ -175,31 +184,24 @@ const Item = () => {
             {/* Chart */}
             <Grid item xs={12} md={4} lg={3}>
               <Paper className={fixedSquarePaper}>
-                <Avatar
-                  alt="Remy Sharp"
-                  src="https://miro.medium.com/max/1200/1*mk1-6aYaf_Bes1E3Imhc0A.jpeg"
-                  className={classes.avatarLarge}
-                />
+                <Avatar alt={userInfo.name} src={userInfo.photo} className={classes.avatarLarge} />
               </Paper>
               <br />
               <Paper className={fixedWidthPaper}>
-                <p style={{ marginLeft: "auto", marginRight: "auto" }}> Bobbo3000 </p>
+                <p style={{ marginLeft: "auto", marginRight: "auto" }}> {userInfo.name} </p>
               </Paper>
             </Grid>
             {/* Recent Deposits */}
             <Grid item xs={12} md={8} lg={9}>
               <Paper className={fixedHigherHeightPaper}>
-                <ImageGallery items={images} />
+                <ImageGallery items={userInfo.post.images} />
               </Paper>
             </Grid>
 
             <Grid item xs={12}>
               <Paper className={fixedHeightPaper}>
-                <h1>Badminton Racquets!</h1>
-                <p>
-                  Hello, I have some badminton racquets to lend out. Costs: $3/hr each. Quantity : x2 Collection @ Utown
-                  Residence
-                </p>
+                <h1>{userInfo.post.title}</h1>
+                <p>{userInfo.post.text}</p>
               </Paper>
             </Grid>
 

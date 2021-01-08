@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import MainPage from "./Titlebar";
-import User from "./User";
+import User from "./completedpages/User";
 import SignUp from "./completedpages/SignUpAndIn";
 import CreateNewItem from "./completedpages/CreateNewItem";
 import NewItem from "./completedpages/MainPage";
