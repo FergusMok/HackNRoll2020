@@ -1,0 +1,23 @@
+.image-gallery {
+  width: 40%;
+  height: auto;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.image-gallery-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  overflow: hidden;
+  object-position: center center;
+}
+
+.fullscreen .image-gallery-slide img {
+  max-height: 100vh;
+}
+
+.image-gallery-svg {
+  height: 36px;
+  width: 36px;
+}
