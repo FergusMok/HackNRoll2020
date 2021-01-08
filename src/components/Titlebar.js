@@ -161,15 +161,4 @@ export default function Dashboard({ name }) {
       </Drawer>
     </>
   );
-
-  /*   <main className={classes.content}>
-    <div className={classes.appBarSpacer} />
-    <Album />
-    <Tooltip title="Add" aria-label="add">
-      <Fab color="secondary" className={classes.absolute}>
-        <AddIcon />
-      </Fab>
-    </Tooltip>
-  </main>;
- */
 }
