@@ -46,21 +46,23 @@ export default function RectangleUsers({ user }) {
   const classes = useStyles();
 
   // CHANGE WHEN API COMES
-
-  const userID = user.id;
-  const userTelegram = user.telegram;
+  console.log(user);
 
   return (
     <Card className={classes.root} style={{ backgroundColor: "#E5F9E7" }}>
       <CardContent>
-        <Typography className={classes.status} color="textSecondary" gutterBottom>
+        <Typography
+          className={classes.status}
+          color="textSecondary"
+          gutterBottom
+        >
           Applicant
         </Typography>
         <Typography variant="h5" component="h2">
-          Website User ID : {userID}
+          Applicant Name : {user.username}
         </Typography>
         <Typography className={classes.pos} variant="h5" component="h2">
-          Contact via Telegram at : {userTelegram}
+          Contact via Telegram at : {user.telegramID}
         </Typography>
       </CardContent>
     </Card>

@@ -16,8 +16,8 @@ const ApplicantPage = () => {
   const classes = useStyles();
   const location = useLocation();
 
-  const renderRectangleUsers = location.state.map((users) => {
-    return <RectangleUsers users />;
+  const renderRectangleUsers = location.state.postUsersMatched.map((users) => {
+    return <RectangleUsers user={users} />;
   });
   // A get request here, based on object_id, so as to get the match of user_name and telegram_ids
 

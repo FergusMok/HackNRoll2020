@@ -3,8 +3,13 @@ import { isValid } from "./API";
 
 export const backendURL = "http://localhost:8080";
 
+export function isLoggedIn() {
+  return sessionStorage.getItem("user_id") === null;
+}
+
 export async function logoutUser() {
   sessionStorage.removeItem("access_token");
+  sessionStorage.removeItem("user_id");
 }
 
 export async function signup(username, telegramID, password, callback) {
@@ -46,6 +51,8 @@ export async function login(username, password, callback, failureCallback) {
       }
       sessionStorage.setItem("access_token", response.data.token);
       sessionStorage.setItem("user_id", response.data.user.id);
+      sessionStorage.setItem("username", response.data.user.username);
+
       callback(response.data.user);
     })
     .catch((Error) => console.log(Error));

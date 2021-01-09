@@ -55,21 +55,28 @@ export default function RectangleItems({ post }) {
   const postBody = post.body;
 
   const isMatched = numberOfMatches > 0 ? true : false;
-
+  const history = useHistory();
   const status = isMatched ? "MATCHED" : "WAITING FOR MATCH";
+
+  const handleOnClick = () => {
+    history.push({
+      pathname: "/applicants",
+      search: "",
+      state: { postUsersMatched },
+    });
+  };
 
   const confirmMatchButton = () =>
     isMatched ? (
       <>
-        <Link to="/applicants" state={postUsersMatched} />
         <Button
+          onClick={handleOnClick}
           className={classes.itembutton}
           variant="outlined"
           color="primary"
         >
           View Applicants!
         </Button>
-        <Link />
       </>
     ) : (
       <> </>
