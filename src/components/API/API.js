@@ -1,5 +1,5 @@
 import axios from "axios";
-import { backendURL } from "./LoginHandler";
+import { backendURL, logoutUser } from "./LoginHandler";
 
 export function dashboard(callback) {
   const actualURL = backendURL + "/dashboard";
@@ -15,6 +15,9 @@ export function dashboard(callback) {
     withCredentials: true,
   })
     .then((response) => {
+      if (response.data === null) {
+        logoutUser();
+      }
       callback(response.data);
     })
     .catch((Error) => console.log(Error));
@@ -34,6 +37,9 @@ export async function activeRequests(callback) {
     withCredentials: true,
   })
     .then((response) => {
+      if (response.data === null) {
+        logoutUser();
+      }
       console.log(response.data);
       callback(response.data);
     })
@@ -55,6 +61,9 @@ export async function matchUser(id, callback) {
     withCredentials: true,
   })
     .then((response) => {
+      if (response.data === null) {
+        logoutUser();
+      }
       console.log(response.data);
       callback(response.data);
     })
@@ -75,6 +84,9 @@ export async function requestsMadeByUser(callback) {
     withCredentials: true,
   })
     .then((response) => {
+      if (response.data === null) {
+        logoutUser();
+      }
       console.log(response.data);
       callback(response.data);
     })
@@ -97,6 +109,9 @@ export function postNewSocialRequest(title, description, callback) {
     withCredentials: true,
   })
     .then((response) => {
+      if (response.data === null) {
+        logoutUser();
+      }
       console.log(response.data);
       callback(response.data);
     })
@@ -118,6 +133,9 @@ export function getRequestInformation(id, callback) {
     withCredentials: true,
   })
     .then((response) => {
+      if (response.data === null) {
+        logoutUser();
+      }
       console.log(response.data);
       callback(response.data);
     })
@@ -138,6 +156,9 @@ export function getRequest(callback) {
     withCredentials: true,
   })
     .then((response) => {
+      if (response.data === null) {
+        logoutUser();
+      }
       console.log(response.data);
       callback(response.data);
     })
