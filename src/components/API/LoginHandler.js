@@ -5,6 +5,7 @@ import { Redirect } from "react-router-dom";
 export const backendURL = "http://localhost:8080";
 
 export function isLoggedIn() {
+  console.log(sessionStorage.getItem("user_id"));
   return sessionStorage.getItem("user_id") !== null;
 }
 

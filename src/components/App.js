@@ -13,7 +13,6 @@ import { redirectingFn } from "./API/LoginHandler";
 const App = () => {
   return (
     <Router>
-      {redirectingFn()}
       <Switch>
         <Route path="/" exact component={FrontPage} />
         <Route path="/main" exact component={MainPage} />

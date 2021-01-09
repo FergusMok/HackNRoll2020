@@ -15,10 +15,11 @@ export function dashboard(callback) {
     withCredentials: true,
   })
     .then((response) => {
-      if (response.data === null) {
+      if (response.data === undefined) {
         logoutUser();
+      } else {
+        callback(response.data);
       }
-      callback(response.data);
     })
     .catch((Error) => console.log(Error));
 }
@@ -37,11 +38,13 @@ export async function activeRequests(callback) {
     withCredentials: true,
   })
     .then((response) => {
-      if (response.data === null) {
+      if (response.data === "") {
         logoutUser();
+      } else {
+        console.log(response);
+        console.log(response.data);
+        callback(response.data);
       }
-      console.log(response.data);
-      callback(response.data);
     })
     .catch((Error) => console.log(Error));
 }
@@ -61,11 +64,12 @@ export async function matchUser(id, callback) {
     withCredentials: true,
   })
     .then((response) => {
-      if (response.data === null) {
+      if (response.data === "") {
         logoutUser();
+      } else {
+        console.log(response.data);
+        callback(response.data);
       }
-      console.log(response.data);
-      callback(response.data);
     })
     .catch((Error) => console.log(Error));
 }
@@ -84,11 +88,12 @@ export async function requestsMadeByUser(callback) {
     withCredentials: true,
   })
     .then((response) => {
-      if (response.data === null) {
+      if (response.data === "") {
         logoutUser();
+      } else {
+        console.log(response.data);
+        callback(response.data);
       }
-      console.log(response.data);
-      callback(response.data);
     })
     .catch((Error) => console.log(Error));
 }
@@ -109,11 +114,12 @@ export function postNewSocialRequest(title, description, callback) {
     withCredentials: true,
   })
     .then((response) => {
-      if (response.data === null) {
+      if (response.data === "") {
         logoutUser();
+      } else {
+        console.log(response.data);
+        callback(response.data);
       }
-      console.log(response.data);
-      callback(response.data);
     })
     .catch((Error) => console.log(Error));
 }
@@ -133,11 +139,12 @@ export function getRequestInformation(id, callback) {
     withCredentials: true,
   })
     .then((response) => {
-      if (response.data === null) {
+      if (response.data === "") {
         logoutUser();
+      } else {
+        console.log(response.data);
+        callback(response.data);
       }
-      console.log(response.data);
-      callback(response.data);
     })
     .catch((Error) => console.log(Error));
 }
@@ -156,11 +163,12 @@ export function getRequest(callback) {
     withCredentials: true,
   })
     .then((response) => {
-      if (response.data === null) {
+      if (response.data === "") {
         logoutUser();
+      } else {
+        console.log(response.data);
+        callback(response.data);
       }
-      console.log(response.data);
-      callback(response.data);
     })
     .catch((Error) => console.log(Error));
 }

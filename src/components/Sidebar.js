@@ -9,6 +9,7 @@ import GroupIcon from "@material-ui/icons/Group";
 import CardGiftcardIcon from "@material-ui/icons/CardGiftcard";
 import { Link } from "react-router-dom";
 import { logoutUser } from "./API/LoginHandler";
+import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 
 const Sidebar = () => {
   const onClickLogOut = () => {
@@ -36,7 +37,7 @@ const Sidebar = () => {
       </Link>
       <ListItem button onClick={onClickLogOut}>
         <ListItemIcon>
-          <GroupIcon />
+          <ExitToAppIcon />
         </ListItemIcon>
         <ListItemText primary="Log Out" />
       </ListItem>
