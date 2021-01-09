@@ -2,6 +2,7 @@ import RectangleUsers from "../RectangleUsers";
 import Titlebar from "../Titlebar";
 import { makeStyles } from "@material-ui/core/styles";
 import { useLocation } from "react-router-dom";
+import { redirectingFn } from "../API/LoginHandler";
 
 const useStyles = makeStyles((theme) => ({
   appBarSpacer: theme.mixins.toolbar,
@@ -23,6 +24,8 @@ const ApplicantPage = () => {
 
   return (
     <div style={{ display: "flex" }}>
+      {redirectingFn()}
+
       <Titlebar name={"Applicant Page"} />
       <main className={classes.content}>
         <div className={classes.appBarSpacer} />

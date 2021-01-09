@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { useHistory } from "react-router-dom";
 import { postNewSocialRequest } from "../API/API";
+import { redirectingFn } from "../API/LoginHandler";
 import "../CSS/CreateNewItem.css";
 
 const CreateNewItem = () => {
@@ -39,6 +40,8 @@ const CreateNewItem = () => {
 
   return (
     <div className="NewItemBody">
+      {redirectingFn()}
+
       <form onSubmit={(event) => (isNewItem() ? onFormSubmit(event) : onFormEdit(event))} className="itemform">
         <h1 className="itemh1"> {isNewItem() ? "Create new item!" : "Edit item!"} </h1>
         <label className="itemlabel">

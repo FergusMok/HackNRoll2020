@@ -2,6 +2,7 @@ import React from "react";
 import Album from "../Album.js";
 import Titlebar from "../Titlebar.js";
 import { makeStyles } from "@material-ui/core/styles";
+import { redirectingFn } from "../API/LoginHandler";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -24,6 +25,8 @@ const NewItem = () => {
   const classes = useStyles();
   return (
     <div style={{ display: "flex" }}>
+      {redirectingFn()}
+
       <Titlebar name={"Main Page"} />
       <main className={classes.content}>
         <div className={classes.appBarSpacer} />

@@ -3,6 +3,7 @@ import Titlebar from "../Titlebar";
 import { makeStyles } from "@material-ui/core/styles";
 import { useCallback, useState, useEffect } from "react";
 import { getRequest } from "../API/API";
+import { redirectingFn } from "../API/LoginHandler";
 
 const useStyles = makeStyles((theme) => ({
   appBarSpacer: theme.mixins.toolbar,
@@ -38,6 +39,8 @@ const NotificationPage = () => {
   const classes = useStyles();
   return (
     <div style={{ display: "flex" }}>
+      {redirectingFn()}
+
       <Titlebar name={"Notifications"} />
       <main className={classes.content}>
         <div className={classes.appBarSpacer} />
