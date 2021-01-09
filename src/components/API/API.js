@@ -98,14 +98,15 @@ export async function requestsMadeByUser(callback) {
     .catch((Error) => console.log(Error));
 }
 
-export function postNewSocialRequest(title, description, callback) {
-  const actualURL = backendURL + "/social/add";
+export function postNewSocialRequest(title, description, category, callback) {
+  const actualURL = backendURL + "/social/addcat";
 
   const params = new URLSearchParams();
   params.append("user_id", sessionStorage.getItem("user_id"));
   params.append("access_token", sessionStorage.getItem("access_token"));
   params.append("title", title);
   params.append("description", description);
+  params.append("category", category);
 
   axios({
     method: "post",

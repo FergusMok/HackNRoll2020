@@ -42,7 +42,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const AlbumItems = ({ title, description, id, isItem }) => {
+const AlbumItems = ({ title, description, id, category }) => {
   const classes = useStyles();
 
   // userID
@@ -53,13 +53,21 @@ const AlbumItems = ({ title, description, id, isItem }) => {
   // endTime
 
   const history = useHistory();
-  const colorOfCard = isItem ? "#85D9BF" : "#CFA76E";
+  const isItem = category;
+  console.log(isItem);
+  const colorOfCard = isItem === "true" ? "#85D9BF" : "#CFA76E";
 
   return (
     <Grid item key={title} xs={12} sm={6} md={4}>
-      <Card className={classes.card} style={{ backgroundColor: { colorOfCard } }}>
+      <Card
+        className={classes.card}
+        style={{ backgroundColor: { colorOfCard } }}
+      >
         <CardActionArea onClick={() => history.push(`/item/${id}`)}>
-          <CardMedia className={classes.cardMedia} image="https://source.unsplash.com/random" />
+          <CardMedia
+            className={classes.cardMedia}
+            image="https://source.unsplash.com/random"
+          />
           <CardContent className={classes.cardContent}>
             <Typography gutterBottom variant="h5" component="h2">
               {title}

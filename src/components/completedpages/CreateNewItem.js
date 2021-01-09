@@ -15,7 +15,7 @@ const CreateNewItem = () => {
   const isNewItem = () => true;
   const [titleState, setTitle] = useState("");
   const [bodyState, setBody] = useState("");
-  const [categoryState, setCategorystate] = useState(null);
+  const [categoryState, setCategorystate] = useState("");
 
   const handleRadioChange = (event) => {
     setCategorystate(event.target.value);
@@ -36,23 +36,38 @@ const CreateNewItem = () => {
   const deleteButton = isNewItem() ? (
     <></>
   ) : (
-    <button onClick={() => console.log("Hello from delete")}> {"Delete"} </button>
+    <button onClick={() => console.log("Hello from delete")}>
+      {" "}
+      {"Delete"}{" "}
+    </button>
   );
   // Double ternary
   const completeIncompleteButton = isNewItem() ? (
     <></>
   ) : true ? (
-    <button onClick={() => console.log("Hello from completed button")}>{"Mark as Incomplete"}</button>
+    <button onClick={() => console.log("Hello from completed button")}>
+      {"Mark as Incomplete"}
+    </button>
   ) : (
-    <button onClick={() => console.log("Hello from incomplete button")}>{"Mark as Complete"}</button>
+    <button onClick={() => console.log("Hello from incomplete button")}>
+      {"Mark as Complete"}
+    </button>
   );
 
   return (
     <div className="NewItemBody">
       {redirectingFn()}
 
-      <form onSubmit={(event) => (isNewItem() ? onFormSubmit(event) : onFormEdit(event))} className="itemform">
-        <h1 className="itemh1"> {isNewItem() ? "Create new item!" : "Edit item!"} </h1>
+      <form
+        onSubmit={(event) =>
+          isNewItem() ? onFormSubmit(event) : onFormEdit(event)
+        }
+        className="itemform"
+      >
+        <h1 className="itemh1">
+          {" "}
+          {isNewItem() ? "Create new item!" : "Edit item!"}{" "}
+        </h1>
         <label className="itemlabel">
           Title:
           <input
@@ -78,9 +93,22 @@ const CreateNewItem = () => {
           />
         </label>
         <FormLabel component="legend">Choose your category!</FormLabel>
-        <RadioGroup aria-label="quiz" name="quiz" value={categoryState} onChange={handleRadioChange}>
-          <FormControlLabel value={true} control={<Radio />} label="Lending items" />
-          <FormControlLabel value={false} control={<Radio />} label="Organise Activity" />
+        <RadioGroup
+          aria-label="quiz"
+          name="quiz"
+          value={categoryState}
+          onChange={handleRadioChange}
+        >
+          <FormControlLabel
+            value={"true"}
+            control={<Radio />}
+            label="Lending items"
+          />
+          <FormControlLabel
+            value={"false"}
+            control={<Radio />}
+            label="Organise Activity"
+          />
         </RadioGroup>
         {submitEditButton}
       </form>

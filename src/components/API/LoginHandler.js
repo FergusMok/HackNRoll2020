@@ -63,7 +63,7 @@ export async function login(username, password, callback, failureCallback) {
     withCredentials: true,
   })
     .then((response) => {
-      if (response.data.user === null) {
+      if (response.data.user === undefined) {
         failureCallback();
       }
       sessionStorage.setItem("access_token", response.data.token);

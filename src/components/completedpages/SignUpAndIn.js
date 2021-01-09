@@ -14,6 +14,7 @@ import { signup, backendURL, login } from "../API/LoginHandler";
 import Alert from "@material-ui/lab/Alert";
 import IconButton from "@material-ui/core/IconButton";
 import CloseIcon from "@material-ui/icons/Close";
+import { Collapse } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -117,7 +118,9 @@ export default function SignInAndIn({ match }) {
         </Typography>
         <form
           className={classes.form}
-          onSubmit={(event) => (isSignInPage() ? handleLogin(event) : handleSubmit(event))}
+          onSubmit={(event) =>
+            isSignInPage() ? handleLogin(event) : handleSubmit(event)
+          }
         >
           <TextField
             variant="outlined"
@@ -144,29 +147,40 @@ export default function SignInAndIn({ match }) {
             onInput={(e) => setPassword(e.target.value)}
           />
           {confirmPassword}
-          <Alert
-            action={
-              <IconButton
-                aria-label="close"
-                color="inherit"
-                size="small"
-                onClick={() => {
-                  setOpen(false);
-                }}
-              >
-                <CloseIcon fontSize="inherit" />
-              </IconButton>
-            }
+          <Collapse in={open}>
+            <Alert
+              severity="error"
+              action={
+                <IconButton
+                  aria-label="close"
+                  color="inherit"
+                  size="small"
+                  onClick={() => {
+                    setOpen(false);
+                  }}
+                >
+                  <CloseIcon fontSize="inherit" />
+                </IconButton>
+              }
+            >
+              Wrong username and/or password!
+            </Alert>
+          </Collapse>
+          <Button
+            type="submit"
+            fullWidth
+            variant="contained"
+            color="primary"
+            className={classes.submit}
           >
-            Wrong username and/or password!
-          </Alert>
-          <Button type="submit" fullWidth variant="contained" color="primary" className={classes.submit}>
             {isSignInPage() ? "Log In" : "Register"}
           </Button>
           <Grid container>
             <Grid item>
               <Link to={isSignInPage() ? "/signup" : "/signin"}>
-                {isSignInPage() ? "Don't have an account? Sign Up" : "Have an account? Sign in!"}
+                {isSignInPage()
+                  ? "Don't have an account? Sign Up"
+                  : "Have an account? Sign in!"}
               </Link>
             </Grid>
           </Grid>
