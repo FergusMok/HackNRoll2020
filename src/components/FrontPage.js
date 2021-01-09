@@ -9,12 +9,20 @@ import { makeStyles } from "@material-ui/core/styles";
 const useStyles = makeStyles((theme) => ({
   absoluteRegister: {
     position: "absolute",
-    bottom: theme.spacing(4),
-    right: theme.spacing(6),
+    left: "60vh",
+    bottom: "20vh",
   },
   absoluteLogin: {
     position: "absolute",
-    right: theme.spacing(6),
+    right: "60vh",
+    bottom: "20vh",
+  },
+  textInput: {
+    position: "absolute",
+    left: "30vh",
+    top: "15vh",
+    fontSize: "100px",
+    font: "Roboto",
   },
 }));
 
@@ -31,28 +39,14 @@ const FrontPage = () => {
   return (
     <div>
       <Paper style={{ maxHeight: "100%", maxWidth: "100%" }} elevation={3}>
-        <img
-          src={Image}
-          width="100%"
-          overflow="auto"
-          style={{ position: "relative" }}
-        />
-        <Button
-          variant="contained"
-          color="red"
-          style={{ position: "absolute" }}
-          onClick={onClickRegister}
-        >
+        <img src={Image} width="100%" overflow="auto" style={{ position: "relative" }} />
+        <Button variant="contained" color="red" className={classes.absoluteRegister} onClick={onClickRegister}>
           Register a new account!
         </Button>
-        <Button
-          variant="contained"
-          color="Blue"
-          style={{ position: "absolute" }}
-          onClick={onClickLogin}
-        >
+        <Button variant="contained" color="Blue" className={classes.absoluteLogin} onClick={onClickLogin}>
           Log in!
         </Button>
+        <p className={classes.textInput}> Find Friends and Rent Items </p>
       </Paper>
     </div>
   );

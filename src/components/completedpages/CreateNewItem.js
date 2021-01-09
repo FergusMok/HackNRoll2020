@@ -5,6 +5,7 @@ import { redirectingFn } from "../API/LoginHandler";
 import Radio from "@material-ui/core/Radio";
 import RadioGroup from "@material-ui/core/RadioGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
+import FormLabel from "@material-ui/core/FormLabel";
 import "../CSS/CreateNewItem.css";
 
 const CreateNewItem = () => {
@@ -77,7 +78,7 @@ const CreateNewItem = () => {
           />
         </label>
         <FormLabel component="legend">Choose your category!</FormLabel>
-        <RadioGroup aria-label="quiz" name="quiz" value={value} onChange={handleRadioChange}>
+        <RadioGroup aria-label="quiz" name="quiz" value={categoryState} onChange={handleRadioChange}>
           <FormControlLabel value={true} control={<Radio />} label="Lending items" />
           <FormControlLabel value={false} control={<Radio />} label="Organise Activity" />
         </RadioGroup>
