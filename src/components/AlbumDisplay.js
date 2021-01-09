@@ -90,11 +90,7 @@ export function AlbumDisplay(props) {
         <Container className={classes.cardGrid} maxWidth="md">
           <Grid container spacing={4}>
             {cards.map((x) => (
-              <AlbumItems
-                title={x.title}
-                description={x.description}
-                id={x.id}
-              />
+              <AlbumItems title={x.title} description={x.description} id={x.id} category={x.category} />
             ))}
           </Grid>
         </Container>

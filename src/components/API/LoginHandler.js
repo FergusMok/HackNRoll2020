@@ -52,7 +52,6 @@ export async function signup(username, telegramID, password, callback) {
 
 export async function login(username, password, callback, failureCallback) {
   const actualURL = backendURL + "/login";
-
   const params = new URLSearchParams();
   params.append("username", username);
   params.append("password", password);

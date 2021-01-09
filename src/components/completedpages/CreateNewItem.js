@@ -2,6 +2,9 @@ import React, { useState, useEffect, useCallback } from "react";
 import { useHistory } from "react-router-dom";
 import { postNewSocialRequest } from "../API/API";
 import { redirectingFn } from "../API/LoginHandler";
+import Radio from "@material-ui/core/Radio";
+import RadioGroup from "@material-ui/core/RadioGroup";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
 import "../CSS/CreateNewItem.css";
 
 const CreateNewItem = () => {
@@ -11,10 +14,15 @@ const CreateNewItem = () => {
   const isNewItem = () => true;
   const [titleState, setTitle] = useState("");
   const [bodyState, setBody] = useState("");
+  const [categoryState, setCategorystate] = useState(null);
+
+  const handleRadioChange = (event) => {
+    setCategorystate(event.target.value);
+  };
 
   const onFormSubmit = (event) => {
     event.preventDefault();
-    postNewSocialRequest(titleState, bodyState, (e) => {
+    postNewSocialRequest(titleState, bodyState, categoryState, (e) => {
       history.push("/main");
     });
   };
@@ -68,6 +76,11 @@ const CreateNewItem = () => {
             className="itemtextarea"
           />
         </label>
+        <FormLabel component="legend">Choose your category!</FormLabel>
+        <RadioGroup aria-label="quiz" name="quiz" value={value} onChange={handleRadioChange}>
+          <FormControlLabel value={true} control={<Radio />} label="Lending items" />
+          <FormControlLabel value={false} control={<Radio />} label="Organise Activity" />
+        </RadioGroup>
         {submitEditButton}
       </form>
     </div>
