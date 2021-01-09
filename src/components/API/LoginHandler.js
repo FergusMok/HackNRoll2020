@@ -1,10 +1,26 @@
 import axios from "axios";
 import { isValid } from "./API";
+import { Redirect } from "react-router-dom";
 
 export const backendURL = "http://localhost:8080";
 
 export function isLoggedIn() {
-  return sessionStorage.getItem("user_id") === null;
+  return sessionStorage.getItem("user_id") !== null;
+}
+
+export function redirectingFnPrivatePath() {
+  if (!isLoggedIn()) {
+    return <Redirect exact path="/" />;
+  } else {
+    return <Redirect to="/main" />;
+  }
+}
+
+export function redirectingFn() {
+  console.log("REDIRECTED OUT AFTER LOGGING OUT");
+  if (!isLoggedIn()) {
+    return <Redirect exact path="/" />;
+  }
 }
 
 export async function logoutUser() {

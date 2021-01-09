@@ -8,8 +8,14 @@ import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import GroupIcon from "@material-ui/icons/Group";
 import CardGiftcardIcon from "@material-ui/icons/CardGiftcard";
 import { Link } from "react-router-dom";
+import { logoutUser } from "./API/LoginHandler";
 
 const Sidebar = () => {
+  const onClickLogOut = () => {
+    console.log("LOGGED OUT");
+    logoutUser();
+  };
+
   return (
     <div>
       <Link to="/notifications">
@@ -28,6 +34,12 @@ const Sidebar = () => {
           <ListItemText primary="Activities" />
         </ListItem>
       </Link>
+      <ListItem button onClick={onClickLogOut}>
+        <ListItemIcon>
+          <GroupIcon />
+        </ListItemIcon>
+        <ListItemText primary="Log Out" />
+      </ListItem>
     </div>
   );
 };

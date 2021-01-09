@@ -107,6 +107,10 @@ const useStyles = makeStyles((theme) => ({
     bottom: theme.spacing(4),
     right: theme.spacing(6),
   },
+  absoluteRight: {
+    position: "absolute",
+    right: theme.spacing(6),
+  },
 }));
 
 export default function Dashboard({ name }) {
@@ -136,6 +140,10 @@ export default function Dashboard({ name }) {
           </IconButton>
           <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
             {name}
+          </Typography>
+
+          <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.absoluteRight}>
+            {sessionStorage.getItem("username")}
           </Typography>
         </Toolbar>
       </AppBar>

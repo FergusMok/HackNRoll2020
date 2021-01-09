@@ -7,10 +7,13 @@ import CreateNewItem from "./completedpages/CreateNewItem";
 import NotificationPage from "./completedpages/ NotificationPage";
 import ApplicantPage from "./completedpages/ApplicantPage";
 import FrontPage from "./FrontPage";
+import PrivateRoutes from "./completedpages/PrivateRoutes";
+import { redirectingFn } from "./API/LoginHandler";
 
 const App = () => {
   return (
     <Router>
+      {redirectingFn()}
       <Switch>
         <Route path="/" exact component={FrontPage} />
         <Route path="/main" exact component={MainPage} />
@@ -21,6 +24,7 @@ const App = () => {
         {/* The id for Notification and Applicant is user ID. The ID above is Item ID} */}
         <Route path="/notifications" exact component={NotificationPage} />
         <Route path="/applicants" exact component={ApplicantPage} />
+        <Route path="/:someParam" component={PrivateRoutes} />
       </Switch>
     </Router>
   );
