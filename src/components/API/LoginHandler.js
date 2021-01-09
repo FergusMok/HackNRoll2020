@@ -10,6 +10,7 @@ export function isLoggedIn() {
 export async function logoutUser() {
   sessionStorage.removeItem("access_token");
   sessionStorage.removeItem("user_id");
+  sessionStorage.removeItem("username");
 }
 
 export async function signup(username, telegramID, password, callback) {
