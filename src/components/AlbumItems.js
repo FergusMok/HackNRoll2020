@@ -59,16 +59,16 @@ const AlbumItems = ({ title, description, id, category }) => {
 
   return (
     <Grid item key={title} xs={12} sm={6} md={4}>
-      <Card
-        className={classes.card}
-        style={{ backgroundColor: { colorOfCard } }}
-      >
+      <Card className={classes.card}>
         <CardActionArea onClick={() => history.push(`/item/${id}`)}>
           <CardMedia
             className={classes.cardMedia}
             image="https://source.unsplash.com/random"
           />
-          <CardContent className={classes.cardContent}>
+          <CardContent
+            className={classes.cardContent}
+            style={{ backgroundColor: colorOfCard }}
+          >
             <Typography gutterBottom variant="h5" component="h2">
               {title}
             </Typography>
