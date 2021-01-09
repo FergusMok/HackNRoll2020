@@ -61,12 +61,7 @@ export default function RectangleItems({ post }) {
   const confirmMatchButton = () =>
     isMatched ? (
       <>
-        <Link
-          to={{
-            pathName: `/${userID}/applicants`,
-            state: postUsersMatched,
-          }}
-        />
+        <Link to="/applicants" state={postUsersMatched} />
         <Button
           className={classes.itembutton}
           variant="outlined"

@@ -40,6 +40,27 @@ export async function activeRequests(callback) {
     .catch((Error) => console.log(Error));
 }
 
+export async function matchUser(id, callback) {
+  const actualURL = backendURL + "/social/match";
+
+  const params = new URLSearchParams();
+  params.append("user_id", sessionStorage.getItem("user_id"));
+  params.append("access_token", sessionStorage.getItem("access_token"));
+  params.append("request_id", id);
+
+  axios({
+    method: "post",
+    url: actualURL,
+    data: params,
+    withCredentials: true,
+  })
+    .then((response) => {
+      console.log(response.data);
+      callback(response.data);
+    })
+    .catch((Error) => console.log(Error));
+}
+
 export async function requestsMadeByUser(callback) {
   const actualURL = backendURL + "/social/requestsMade";
 

@@ -19,7 +19,7 @@ import "react-image-gallery/styles/css/image-gallery.css";
 import "../CSS/User.css";
 import { useHistory } from "react-router-dom";
 
-import { getRequestInformation } from "../API/API";
+import { getRequestInformation, matchUser } from "../API/API";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -115,7 +115,9 @@ function ChipsArray() {
   const [chipData, setChipData] = React.useState(userInfo.post.tags);
 
   const handleDelete = (chipToDelete) => () => {
-    setChipData((chips) => chips.filter((chip) => chip.key !== chipToDelete.key));
+    setChipData((chips) =>
+      chips.filter((chip) => chip.key !== chipToDelete.key)
+    );
   };
 
   return (
@@ -151,14 +153,19 @@ const Item = ({ match }) => {
   const handleCloseAndPost = () => {
     console.log(match);
     // Post request
-    getRequestInformation(match.params.id, (x) => {});
+    matchUser(match.params.id, (x) => {});
     // The callback function is here
     history.push("/main");
   };
 
   const applyButton = (
     <>
-      <Button className={classes.itembutton} variant="outlined" color="primary" onClick={handleClickOpen}>
+      <Button
+        className={classes.itembutton}
+        variant="outlined"
+        color="primary"
+        onClick={handleClickOpen}
+      >
         Confirm Matching
       </Button>
       <Dialog
@@ -167,11 +174,13 @@ const Item = ({ match }) => {
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
       >
-        <DialogTitle id="alert-dialog-title">{"Confirm to share contact with user?"}</DialogTitle>
+        <DialogTitle id="alert-dialog-title">
+          {"Confirm to share contact with user?"}
+        </DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
-            Matching will allow both users to contact each other. Your contact information will be released to the other
-            user.
+            Matching will allow both users to contact each other. Your contact
+            information will be released to the other user.
           </DialogContentText>
         </DialogContent>
         <DialogActions>
@@ -196,11 +205,18 @@ const Item = ({ match }) => {
             {/* Chart */}
             <Grid item xs={12} md={4} lg={3}>
               <Paper className={fixedSquarePaper}>
-                <Avatar alt={userInfo.name} src={userInfo.photo} className={classes.avatarLarge} />
+                <Avatar
+                  alt={userInfo.name}
+                  src={userInfo.photo}
+                  className={classes.avatarLarge}
+                />
               </Paper>
               <br />
               <Paper className={fixedWidthPaper}>
-                <p style={{ marginLeft: "auto", marginRight: "auto" }}> {userInfo.name} </p>
+                <p style={{ marginLeft: "auto", marginRight: "auto" }}>
+                  {" "}
+                  {userInfo.name}{" "}
+                </p>
               </Paper>
             </Grid>
             {/* Recent Deposits */}
